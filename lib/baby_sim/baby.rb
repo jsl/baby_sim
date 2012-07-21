@@ -22,16 +22,16 @@ module BabySim
     end
 
     def status
-      if (health > 5)
+      if (health > 4)
         "grown up"
 
-      elsif (health > 0) && (health < 4)
+      elsif (health > 0) && (health <= 4)
         "happy"
 
       elsif health == 0
         "ok"
 
-      elsif (health > -5) && (health < 0)
+      elsif (health >= -4) && (health < 0)
         "crying"
 
       elsif health < -4
