@@ -1,5 +1,6 @@
 module BabySim
   class Thing
+    ATTRIBUTE_METHODS = [:color, :effect, :count, :message]
 
     @@all = []
 
@@ -12,33 +13,26 @@ module BabySim
     def initialize name, &block
       @name    = name
       @message = nil
+      @count   = 0
+      @effect  = 0
 
       instance_eval &block
 
       @@all << self
     end
 
-    def color(new_color = nil)
-      set_or_get(:color, new_color)
+    def respond_to?(symbol)
+      ATTRIBUTE_METHODS.include?(symbol) || super
     end
 
-    def effect(new_effect = nil)
-      set_or_get(:effect, new_effect)
-    end
+    def method_missing(meth, *args, &block)
+      if ATTRIBUTE_METHODS.include?(meth)
+        variable = :"@#{meth}"
+        args.any? ? instance_variable_set(variable, args[0]) : instance_variable_get(variable)
+      else
+        super
+      end
 
-    def count(new_count = nil)
-      set_or_get(:count, new_count)
-    end
-
-    def message(new_message = nil)
-      set_or_get(:message, new_message)
-    end
-
-    private
-
-    def set_or_get(key, value)
-      instance_var = :"@#{key}"
-      value.nil? ? instance_variable_get(instance_var) : instance_variable_set(instance_var, value)
     end
   end
 end
