@@ -5,9 +5,9 @@ module BabySim
 
     def initialize
       @health   = 0
-      @color    = "#999"
+      @color    = "#FF00FF"
       @name     = 'Baby'
-      @location = [15, 15]
+      @location = [7, 7]
 
       @encounter_messages = [ ]
     end

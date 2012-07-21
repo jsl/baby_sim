@@ -13,7 +13,7 @@ module BabySim
 
           @field.paint
 
-          para "Watch out baby!!!", :top => 510, :left => 0, :stroke => white,  :font => "11px"
+          para "Simulation continues until health reaches +/- 6.", :top => 510, :left => 0, :stroke => white,  :font => "14px"
         end
       end
 
@@ -26,7 +26,7 @@ module BabySim
 
         render_field
 
-        a = animate(5) do
+        a = animate(4) do
           @field.move_baby
           message = "Baby is #{@field.baby.status} (health meter #{@field.baby.health})\n"
           message += @field.baby.last_encounter_message unless @field.baby.last_encounter_message.nil?
@@ -35,7 +35,7 @@ module BabySim
 
           if @field.baby.finished?
             a.stop
-            alert "Game over! Baby is #{@field.baby.status}."
+            alert "Simulation over! Baby is #{@field.baby.status}."
           end
         end
       end

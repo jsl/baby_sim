@@ -18,7 +18,7 @@ module BabySim
   Thing.new('Samurai Sword') do
     color COLORS[:red]
     effect -2
-    count 60
+    count 20
     message "Ouch! That's sharp!"
   end
 

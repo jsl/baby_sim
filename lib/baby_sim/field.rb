@@ -1,8 +1,8 @@
 module BabySim
   class Field
-    CELL_SIZE = 20
-    UNITS_WIDE  = 25
-    UNITS_TALL  = 25
+    CELL_SIZE = 30
+    UNITS_WIDE  = 15
+    UNITS_TALL  = 15
 
 
     attr_reader :cell_size, :offset, :baby
@@ -51,7 +51,7 @@ module BabySim
       self[x, y] = Cell.new(thing)
 
       @app.nostroke
-      @app.para thing.name[0], :left => x*CELL_SIZE + 3, :top => y*CELL_SIZE - 2, :font => '13px', :stroke => "#00A"
+      @app.para thing.name[0], :left => x*CELL_SIZE + 3, :top => y*CELL_SIZE - 2, :font => '20px', :stroke => "#000000"
     end
 
     def clean_cell(x, y)
